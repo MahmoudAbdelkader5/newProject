@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Employees</h1>
+<br />
+<a class="btn btn-success p-1 w-25" asp-action="Create">Add Employee</a>
+
+<br />
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Id)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Name)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Age)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Address)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Department)</th>
+
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().HireTime)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Email)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Phone)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().Salary)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().CreationDate)</th>
+                    <th scope="col">@Html.DisplayNameFor(d => d.First().IsActive)</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.Id</td>
+                        <td>@emp.Name</td>
+                        <td>@emp.Age</td>
+                        <td>@emp.Address</td>
+                        <td>@emp.Department.name</td>
+
+                        <td>@emp.HireTime</td>
+                        <td>@emp.Email</td>
+                        <td>@emp.Phone</td>
+                        <td>@emp.Salary</td>
+                        <td>@emp.CreationDate</td>
+
+                        <td>@emp.IsActive</td>
+
+                        <partial name="_buttonsPartailView" model="@emp.Id" />
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h3>There are no departments.</h3>
+}  

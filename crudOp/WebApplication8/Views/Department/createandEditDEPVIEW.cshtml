@@ -1,0 +1,22 @@
+﻿@model Department
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="form-group">
+    <label asp-for="code"></label>
+    @* Using asp-for automatically binds the input to the model *@  
+    @Html.TextBoxFor(m => m.code, new { @class = "form-control mb-3" })
+    <span asp-validation-for="code" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="name"></label>
+    @Html.TextBoxFor(m => m.name, new { @class = "form-control mb-3" })
+    <span asp-validation-for="name" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="dateCreation"></label>
+    @Html.TextBoxFor(m => m.dateCreation, "{0:yyyy-MM-dd}", new { @class = "form-control mb-3", type = "date" })
+    <span asp-validation-for="dateCreation" class="text-danger"></span>
+</div>
